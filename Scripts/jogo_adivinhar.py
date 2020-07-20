@@ -3,10 +3,9 @@ import random
 perguntar = False
 
 def verificaChute(chute):
-    if chute < 1 or chute > 10:
-        while chute < 1 or chute > 10:
-            print('Resposta inválida! ')
-            chute = int(input('Digite um número de 1 a 10: '))
+    while chute < 1 or chute > 10:
+        print('Resposta inválida! ')
+        chute = int(input('Digite um número de 1 a 10: '))
 
 print('***' * 7)
 print(' Jogo da adivinhação')
@@ -37,24 +36,17 @@ def main():
                 
             continuar = input('Deseja continuar?? [S/N]\n')
             continuar_f = continuar.strip().lower() #formatado
+            
+            while not continuar_f == 's' and not continuar_f == 'n':
+                print('Resposta inválida! ')
+                continuar = input('Deseja continuar?? [S/N]')     
+                continuar_f = continuar.strip().lower()   
+
             if continuar_f == 's':
                 vidas, numero_secreto = continua()
-            
-            elif continuar_f == 'n':
+            else:
                 print('Certo. Até a próxima! ')
                 break
-
-            else:
-                while not continuar_f == 's' and not continuar_f == 'n':
-                    print('Resposta inválida! ')
-                    continuar = input('Deseja continuar?? [S/N]')     
-                    continuar_f = continuar.strip().lower()   
-
-                if continuar_f == 's':
-                    vidas, numero_secreto = continua()
-                else:
-                    print('Certo. Até a próxima! ')
-                    break
 
         else:
             if vidas > 1:
